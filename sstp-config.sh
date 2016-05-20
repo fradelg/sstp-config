@@ -27,7 +27,7 @@ echo "
 remotename      $1
 linkname        $1
 ipparam         $1
-pty             "sstpc --save-server-route --ipparam $1 --nolaunchpppd $4"
+pty             \"sstpc --save-server-route --ipparam $1 --nolaunchpppd $4\"
 name            $2
 plugin          sstp-pppd-plugin.so
 sstp-sock       /var/run/sstpc/sstpc-$1
@@ -39,6 +39,7 @@ debug
 file /etc/ppp/options.pptp" | sudo tee /etc/ppp/peers/$1
 
 echo "Updating ip-up scripts to add route when connecting ..."
-echo "!/bin/bash
+echo "#!/bin/bash
 NET=\`echo \$4 | cut -d . -f 1,2,3\`
-route add -net \$NET.0/24 dev \$1" | sudo tee /etc/ppp/ip-up.d/0route
+route add -net \$NET.0/24 dev \$1
+echo Added route to network $NET" | sudo tee /etc/ppp/ip-up.d/0route
