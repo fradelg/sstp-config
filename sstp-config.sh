@@ -23,7 +23,8 @@ echo "Adding user credential to chap-secrets ..."
 echo "$2 $1 '$3' *" | sudo tee -a /etc/ppp/chap-secrets
 
 echo "Adding new connection config to PPP peers ..."
-echo "remotename      $1
+echo "
+remotename      $1
 linkname        $1
 ipparam         $1
 pty             "sstpc --save-server-route --ipparam $1 --nolaunchpppd $4"
