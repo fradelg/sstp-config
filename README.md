@@ -6,7 +6,7 @@ Shell script to configure a new SSTP connection in Ubuntu/Debian
 
 ```
 git clone https://github.com/fradelg/sstp-config.git
-cd sstp-config.git
+cd sstp-config
 chmod u+x sstp-config.sh
 ```
 
